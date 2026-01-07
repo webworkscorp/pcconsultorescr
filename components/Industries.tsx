@@ -1,14 +1,13 @@
 
 import React from 'react';
-import { Monitor, ShoppingBag, Plane, Landmark, Briefcase, Car } from 'lucide-react';
+import { Monitor, ShoppingBag, Briefcase, Shield, Store } from 'lucide-react';
 
 const industries = [
   { icon: <Monitor size={20} />, name: "Software & Tecnología" },
   { icon: <ShoppingBag size={20} />, name: "Comercio & Logística" },
-  { icon: <Plane size={20} />, name: "Viajes & Hospedaje" },
-  { icon: <Landmark size={20} />, name: "Bancos & Financieras" },
   { icon: <Briefcase size={20} />, name: "Servicios de Negocio" },
-  { icon: <Car size={20} />, name: "Industria Automotriz" }
+  { icon: <Shield size={20} />, name: "Empresas de Seguridad" },
+  { icon: <Store size={20} />, name: "Pequeñas y Medianas Empresas" }
 ];
 
 const Industries: React.FC = () => {

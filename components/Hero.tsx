@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
             </h1>
             
             <p className="text-sm md:text-base text-white/60 font-medium leading-relaxed max-w-lg">
-              Soporte técnico, desarrollo web y consultoría profesional en San José, Costa Rica. Elevamos la estabilidad digital de su negocio con atención 24/7.
+              Soporte técnico y consultoría profesional en San José, Costa Rica. Elevamos la estabilidad digital de su negocio con atención 24/7.
             </p>
             
             {/* Contenedor de botones optimizado */}

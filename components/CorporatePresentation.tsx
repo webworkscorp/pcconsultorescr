@@ -10,7 +10,7 @@ const CorporatePresentation: React.FC = () => {
         <h2 className="text-2xl font-bold text-corp-navy uppercase tracking-tight mb-8">Quiénes Somos</h2>
         <div className="space-y-6 max-w-2xl mx-auto mb-12">
           <p className="text-xs md:text-sm text-slate-500 font-medium leading-relaxed">
-            PC Consultores es una empresa costarricense dedicada a brindar soluciones tecnológicas integrales. Nacimos ante la necesidad de ofrecer un ecosistema completo: desde software especializado hasta soporte en sistemas operativos, equipos de cómputo y redes.
+            PC Consultores es una empresa costarricense dedicada a brindar soluciones tecnológicas integrales. Nacimos hace más de 35 años ante la necesidad de ofrecer un ecosistema completo: desde soporte en sistemas operativos hasta soporte en redes y seguridad.
           </p>
           <p className="text-xs md:text-sm text-slate-500 font-medium leading-relaxed">
             Nuestro objetivo es apoyar el crecimiento de negocios y profesionales, garantizando que la tecnología sea un motor de eficiencia y no un obstáculo.

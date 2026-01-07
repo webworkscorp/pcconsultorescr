@@ -47,6 +47,12 @@ const Footer: React.FC = () => {
                   info@pcconsultorescr.com
                 </a>
               </li>
+              <li className="flex gap-4 items-center">
+                <Facebook size={14} className="text-corp-accent" />
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-[12px] font-medium hover:text-corp-accent transition-colors">
+                  Síguenos en Facebook
+                </a>
+              </li>
               <li className="flex gap-4">
                 <MapPin size={14} className="text-corp-accent shrink-0" />
                 <span className="text-[11px] text-white/40 leading-relaxed uppercase tracking-widest">

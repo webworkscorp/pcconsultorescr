@@ -18,11 +18,30 @@ const WhatsAppIcon = ({ size = 12, className = "" }: { size?: number, className?
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [activeSection, setActiveSection] = useState('inicio');
 
   useEffect(() => {
-    const handle = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handle);
-    return () => window.removeEventListener('scroll', handle);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+      
+      const sections = ['inicio', 'nosotros', 'servicios', 'soluciones', 'contacto'];
+      const scrollPosition = window.scrollY + 120;
+
+      for (const sectionId of sections) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const top = el.offsetTop;
+          const bottom = top + el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < bottom) {
+            setActiveSection(sectionId);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollTo = (id: string) => {
@@ -50,7 +69,7 @@ const Navbar: React.FC = () => {
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-corp-accent transition-colors">
+            <a href="https://www.facebook.com/PcConsultoresInt" target="_blank" rel="noopener noreferrer" className="hover:text-corp-accent transition-colors">
               <Facebook size={12} className="opacity-70" />
             </a>
             <a href="https://wa.me/50683400564" target="_blank" rel="noopener noreferrer" className="hover:text-corp-accent transition-colors">
@@ -71,19 +90,30 @@ const Navbar: React.FC = () => {
           </button>
 
           <div className="hidden lg:flex items-center gap-8">
-            {['Inicio', 'Nosotros', 'Servicios', 'Soporte', 'Contacto'].map(item => (
-              <button 
-                key={item} 
-                onClick={() => {
-                  const targetId = item === 'Soporte' ? 'soluciones' : item.toLowerCase();
-                  scrollTo(targetId);
-                }} 
-                className="text-[9px] font-bold uppercase tracking-widest text-corp-navy/60 hover:text-corp-navy border-none bg-transparent cursor-pointer"
-              >
-                {item}
-              </button>
-            ))}
-            <button onClick={() => scrollTo('contacto')} className="px-5 py-2.5 bg-corp-accent text-white text-[9px] font-bold uppercase tracking-widest rounded-sm hover:bg-corp-navy transition-all shadow-sm cursor-pointer border-none">
+            {['Inicio', 'Nosotros', 'Servicios', 'Soporte'].map(item => {
+              const targetId = item === 'Soporte' ? 'soluciones' : item.toLowerCase();
+              const isActive = activeSection === targetId;
+              return (
+                <button 
+                  key={item} 
+                  onClick={() => scrollTo(targetId)} 
+                  className={`text-[9px] font-bold uppercase tracking-widest transition-all duration-300 border-none bg-transparent cursor-pointer relative py-1 ${
+                    isActive ? 'text-corp-accent' : 'text-corp-navy/60 hover:text-corp-navy'
+                  }`}
+                >
+                  {item}
+                  <span className={`absolute -bottom-1 left-0 h-[2px] bg-corp-accent transition-all duration-300 ${isActive ? 'w-full opacity-100' : 'w-0 opacity-0'}`}></span>
+                </button>
+              );
+            })}
+            <button 
+              onClick={() => scrollTo('contacto')} 
+              className={`px-5 py-2.5 text-[9px] font-bold uppercase tracking-widest rounded-sm transition-all shadow-sm cursor-pointer border-none ${
+                activeSection === 'contacto' 
+                ? 'bg-corp-accent text-white shadow-[0_0_15px_rgba(0,123,255,0.4)]' 
+                : 'bg-corp-navy/5 text-corp-navy hover:bg-corp-accent hover:text-white'
+              }`}
+            >
               Contáctenos
             </button>
           </div>
@@ -95,24 +125,21 @@ const Navbar: React.FC = () => {
 
         {mobileMenu && (
           <div className="lg:hidden bg-white border-t border-slate-100 p-6 flex flex-col gap-4 shadow-xl">
-            {['Inicio', 'Nosotros', 'Servicios', 'Soporte', 'Contacto'].map(item => (
-              <button 
-                key={item} 
-                onClick={() => {
-                  const targetId = item === 'Soporte' ? 'soluciones' : item.toLowerCase();
-                  scrollTo(targetId);
-                }} 
-                className="text-left text-[10px] font-bold uppercase tracking-widest text-corp-navy border-none bg-transparent py-2"
-              >
-                {item}
-              </button>
-            ))}
-            <button 
-              onClick={() => scrollTo('contacto')} 
-              className="text-left text-[10px] font-bold uppercase tracking-widest text-corp-accent border-none bg-transparent py-2"
-            >
-              Contáctenos
-            </button>
+            {['Inicio', 'Nosotros', 'Servicios', 'Soporte', 'Contacto'].map(item => {
+              const targetId = item === 'Soporte' ? 'soluciones' : item.toLowerCase();
+              const isActive = activeSection === targetId;
+              return (
+                <button 
+                  key={item} 
+                  onClick={() => scrollTo(targetId)} 
+                  className={`text-left text-[10px] font-bold uppercase tracking-widest border-none bg-transparent py-2 transition-colors ${
+                    isActive ? 'text-corp-accent' : 'text-corp-navy'
+                  }`}
+                >
+                  {item}
+                </button>
+              );
+            })}
           </div>
         )}
       </nav>

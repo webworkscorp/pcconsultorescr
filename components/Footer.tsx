@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
               Soluciones tecnológicas integradas para el crecimiento de negocios y profesionales en Costa Rica.
             </p>
             <div className="flex gap-6">
-              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.facebook.com/PcConsultoresInt" target="_blank" rel="noopener noreferrer">
                 <Facebook size={18} className="text-white/30 hover:text-corp-accent cursor-pointer transition-colors" />
               </a>
             </div>
@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex gap-4 items-center">
                 <Facebook size={14} className="text-corp-accent" />
-                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-[12px] font-medium hover:text-corp-accent transition-colors">
+                <a href="https://www.facebook.com/PcConsultoresInt" target="_blank" rel="noopener noreferrer" className="text-[12px] font-medium hover:text-corp-accent transition-colors">
                   Síguenos en Facebook
                 </a>
               </li>
